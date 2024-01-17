@@ -2,9 +2,13 @@
 import QRCode from "easyqrcodejs-nodejs";
 import { v4 as uuidv4 } from "uuid";
 import { pollitos, monstruitos, heladitos, neutro } from "./variables.js";
+import { clean } from "./cleaner.js";
 
-// Options
+//env variables
+const basicURL = "https://app.guapetones.ar/pets/";
+const designs = [pollitos, heladitos, monstruitos, neutro];
 
+// Options builder DO NOT TOUCH
 const options_object = (current, url) => {
   return {
     text: url,
@@ -78,7 +82,7 @@ const options_object = (current, url) => {
   };
 };
 
-// It generates 1 QR code 
+// It generates 1 QR code
 const generate = function (name = "test", design = neutro, url) {
   console.log("yeii");
   // New instance with options
@@ -88,14 +92,13 @@ const generate = function (name = "test", design = neutro, url) {
   //  Save SVG to file
   qrcode
     .saveSVG({
-      path: 'generated' + '/' + design.name + '/' + 'q-' + name + ".svg", // file path
+      path: "generated" + "/" + design.name + "/" + "q-" + name + ".svg", // file path
     })
     .then((data) => {
       console.log(`${name} has been Created!`);
     });
   console.log("2");
 };
-
 
 // It generates many QR code of a design
 const generateManyOf = (cant, design) => {
@@ -110,11 +113,15 @@ const generateManyOf = (cant, design) => {
   }
 };
 
-const cant = 1;
-const basicURL = "https://app.guapetones.ar/pets/";
-const designs = [pollitos, heladitos, monstruitos, neutro];
+function build(cant) {
+  // It generates many QR code of each design
+  designs.forEach((design) => {
+    generateManyOf(cant, design);
+  });
+}
 
-// It generates many QR code of each design
-designs.forEach(design => {
-  generateManyOf(cant, design)
-});
+//Use this to build an amount of QRs
+build(1)
+
+//Use this to remove all the generated QRs
+// clean()
