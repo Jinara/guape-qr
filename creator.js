@@ -1,37 +1,9 @@
 // const QRCode = require("easyqrcodejs-nodejs");
 import QRCode from "easyqrcodejs-nodejs";
 import { v4 as uuidv4 } from "uuid";
+import { pollitos, monstruitos, heladitos, neutro } from "./variables.js";
 
 // Options
-const pollitos = {
-  titleColor: "#1bb0be",
-  subTitleColor: "#dd3769",
-  logo: "logos/pollito.png",
-  name: "pollitos",
-};
-
-const heladitos = {
-  titleColor: "#cc6176",
-  subTitleColor: "#8f687f",
-  logo: "logos/heladito.png",
-  name: "heladitos",
-};
-
-const monstruitos = {
-  titleColor: "#7475a4",
-  subTitleColor: "#f8c153",
-  logo: "logos/monstruito.png",
-  name: "monstruitos",
-};
-
-const neutro = {
-  titleColor: "#68458c",
-  subTitleColor: "#8b8c37",
-  logo: "logos/neutro3.png",
-  name: "neutro",
-};
-
-const current = pollitos;
 
 const options_object = (current, url) => {
   return {
@@ -116,7 +88,7 @@ const generate = function (name = "test", design = neutro, url) {
   //  Save SVG to file
   qrcode
     .saveSVG({
-      path: 'generated' + '/' + design.name + '/' + name + ".svg", // file path
+      path: 'generated' + '/' + design.name + '/' + 'q-' + name + ".svg", // file path
     })
     .then((data) => {
       console.log(`${name} has been Created!`);
@@ -133,8 +105,6 @@ const generateManyOf = (cant, design) => {
     const myuuid = uuidv4();
     const name = myuuid + "=" + timestamp + "-" + design.name;
     const fullUrl = basicURL + name;
-
-    console.log(fullUrl);
 
     generate(name, design, fullUrl);
   }
