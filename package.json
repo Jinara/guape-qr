@@ -2,10 +2,12 @@
   "name": "qr-generator",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "scripts": {
     "start": "npm run"
   },
   "dependencies": {
-    "easyqrcodejs-nodejs": "^4.5.1"
+    "easyqrcodejs-nodejs": "^4.5.1",
+    "uuid": "^9.0.1"
   }
 }
