@@ -1,7 +1,4 @@
 /node_modules
 package-lock*
 .DS_Store
-generated/pollitos/q*
-generated/heladitos/q*
-generated/monstruitos/q*
-generated/neutro/q*
+generated/*

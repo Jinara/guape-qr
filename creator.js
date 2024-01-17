@@ -59,17 +59,17 @@ const options_object = (current, url) => {
 };
 
 // It generates 1 QR code
-const generate = function (name = "test", design = test, url = test.url) {
+const generate = function (name = "test", design = test, url = test.url, path = '') {
   // New instance with options
   var qrcode = new QRCode(options_object(design, url));
 
-  //  Save SVG to file
+  //  Save PNG to file
+  // Use png over svg cause svg use different configs
+  console.log("AIUDAAA")
+  console.log(path)
   qrcode
-    // .saveSVG({
-    //   path: "generated" + "/" + design.name + "/" + "q-" + name + ".svg", // file path
-    // })
     .saveImage({
-      path: "generated" + "/" + design.name + "/" + "q-" + name + ".png", // file path
+      path: path + "q-" + name + ".png", // file path
     })
     .then((data) => {
       console.log(`${name} has been Created!`);
@@ -77,7 +77,7 @@ const generate = function (name = "test", design = test, url = test.url) {
 };
 
 // It generates many QR code of a design
-const generateManyOf = (cant, design) => {
+const generateManyOf = (cant, design, path) => {
   for (let index = 0; index < cant; index++) {
     const currentDate = new Date();
     const timestamp = currentDate.getTime();
@@ -85,19 +85,34 @@ const generateManyOf = (cant, design) => {
     const name = myuuid + "=" + timestamp + "-" + design.name;
     const fullUrl = basicURL + name;
 
-    generate(name, design, fullUrl);
+    generate(name, design, fullUrl, path);
   }
 };
 
 function build(cant) {
-  // It generates many QR code of each design
+  // It generates many QR code of each design for XS size
+  const xs = 'xs'
   designs.forEach((design) => {
-    generateManyOf(cant, design);
+    let path = "generated" + "/" + design.name + "/" + xs + '/'
+    generateManyOf(cant, design, path);
+  });
+
+  // It generates many QR code of each design for S size
+  const s = 's'
+  designs.forEach((design) => {
+    let path = "generated" + "/" + design.name + "/" + s + '/'
+    generateManyOf(cant, design, path);
+  });
+
+  const ml = 'ml'
+  designs.forEach((design) => {
+    let path = "generated" + "/" + design.name + "/" + ml + '/'
+    generateManyOf(cant, design, path);
   });
 }
 
 //Use this to remove all the generated QRs
-// clean()
+clean()
 
 //Use this to build an amount of QRs
 // generate()

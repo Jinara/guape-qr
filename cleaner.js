@@ -23,8 +23,20 @@ const deleteDirFilesUsingPattern = (pattern, dirPath = __dirname) => {
 };
 
 export const clean = () => {
-  deleteDirFilesUsingPattern(/q-*/, 'generated/monstruitos/')
-  deleteDirFilesUsingPattern(/q-*/, 'generated/heladitos/')
-  deleteDirFilesUsingPattern(/q-*/, 'generated/pollitos/')
-  deleteDirFilesUsingPattern(/q-*/, 'generated/neutro/')
+  console.log('Limpiando monstruitos')
+  deleteDirFilesUsingPattern(/q-*/, 'generated/monstruitos/xs/')
+  deleteDirFilesUsingPattern(/q-*/, 'generated/monstruitos/s/')
+  deleteDirFilesUsingPattern(/q-*/, 'generated/monstruitos/ml/')
+  console.log('Limpiando heladitos')
+  deleteDirFilesUsingPattern(/q-*/, 'generated/heladitos/xs/')
+  deleteDirFilesUsingPattern(/q-*/, 'generated/heladitos/s/')
+  deleteDirFilesUsingPattern(/q-*/, 'generated/heladitos/ml/')
+  console.log('Limpiando pollitos')
+  deleteDirFilesUsingPattern(/q-*/, 'generated/pollitos/xs/')
+  deleteDirFilesUsingPattern(/q-*/, 'generated/pollitos/s/')
+  deleteDirFilesUsingPattern(/q-*/, 'generated/pollitos/ml/')
+  console.log('Limpiando neutro')
+  deleteDirFilesUsingPattern(/q-*/, 'generated/neutro/xs/')
+  deleteDirFilesUsingPattern(/q-*/, 'generated/neutro/s/')
+  deleteDirFilesUsingPattern(/q-*/, 'generated/neutro/ml/')
 }
