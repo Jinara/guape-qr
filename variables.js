@@ -15,7 +15,7 @@ const heladitos = {
 
 const monstruitos = {
   titleColor: "#7475a4",
-  subTitleColor: "#f8c153",
+  subTitleColor: "#e9685a",
   logo: "logos/monstruito.png",
   name: "monstruitos",
 };
@@ -27,4 +27,12 @@ const neutro = {
   name: "neutro",
 };
 
-export { pollitos, heladitos, monstruitos, neutro }
+const test = {
+  titleColor: "#68458c",
+  subTitleColor: "#8b8c37",
+  logo: "logos/neutro.png",
+  name: "neutro",
+  url: "https://app.guapetones.ar/pets/q-d45f1ccf-be9f-4825-8dfe-565e933bd20c=1705509910784-neutro",
+};
+
+export { pollitos, heladitos, monstruitos, neutro, test }

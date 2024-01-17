@@ -1,7 +1,7 @@
 // const QRCode = require("easyqrcodejs-nodejs");
 import QRCode from "easyqrcodejs-nodejs";
 import { v4 as uuidv4 } from "uuid";
-import { pollitos, monstruitos, heladitos, neutro } from "./variables.js";
+import { pollitos, monstruitos, heladitos, neutro, test } from "./variables.js";
 import { clean } from "./cleaner.js";
 
 //env variables
@@ -19,13 +19,13 @@ const options_object = (current, url) => {
     correctLevel: QRCode.CorrectLevel.H,
 
     // ====== Quiet Zone
-    quietZone: 2,
+    quietZone: 5,
     quietZoneColor: "white",
 
     // ====== Logo
     logo: current.logo, // Relative address, relative to `easy.qrcode.min.js`
-    logoWidth: 640, // fixed logo width. default is `width/3.5`
-    logoHeight: 640, // fixed logo height. default is `heigth/3.5`
+    logoWidth: 950, // fixed logo width. default is `width/3.5`
+    logoHeight: 950, // fixed logo height. default is `heigth/3.5`
     // logoMaxWidth: undefined, // Maximum logo width. if set will ignore `logoWidth` value
     // logoMaxHeight: undefined, // Maximum logo height. if set will ignore `logoHeight` value
     logoBackgroundColor: "#fff", // Logo backgroud color, Invalid when `logBgTransparent` is true; default is '#ffffff'
@@ -45,33 +45,9 @@ const options_object = (current, url) => {
     subTitleColor: current.subTitleColor, // color. default is "4F4F4F"
     subTitleTop: 290, // draws y coordinates. default is 0
 
-    /*
-
-   */
-    // ===== Event Handler
-    /*
-  onRenderingStart: undefined,
-  onRenderingEnd: undefined,
-  */
-
-    // ===== Versions
-    /*
-  version: 0, // The symbol versions of QR Code range from Version 1 to Version 40. default 0 means automatically choose the closest version based on the text length.
-  */
-
-    // ===== Binary(hex) data mode
-    /*
-  binary: false, // Whether it is binary mode, default is text mode. 
-  */
-
-    // ===== Tooltip
-    /*
-  tooltip: false, // Whether set the QRCode Text as the title attribute value of the QRCode div
-  */
-
     // ==== CORS
 
-    crossOrigin: null, // String which specifies the CORS setting to use when retrieving the image. null means that the crossOrigin attribute is not set.
+    // crossOrigin: null, // String which specifies the CORS setting to use when retrieving the image. null means that the crossOrigin attribute is not set.
 
     // =====  Drawing method
 
@@ -83,21 +59,21 @@ const options_object = (current, url) => {
 };
 
 // It generates 1 QR code
-const generate = function (name = "test", design = neutro, url) {
-  console.log("yeii");
+const generate = function (name = "test", design = test, url = test.url) {
   // New instance with options
   var qrcode = new QRCode(options_object(design, url));
-  console.log("1");
 
   //  Save SVG to file
   qrcode
-    .saveSVG({
-      path: "generated" + "/" + design.name + "/" + "q-" + name + ".svg", // file path
+    // .saveSVG({
+    //   path: "generated" + "/" + design.name + "/" + "q-" + name + ".svg", // file path
+    // })
+    .saveImage({
+      path: "generated" + "/" + design.name + "/" + "q-" + name + ".png", // file path
     })
     .then((data) => {
       console.log(`${name} has been Created!`);
     });
-  console.log("2");
 };
 
 // It generates many QR code of a design
@@ -120,8 +96,9 @@ function build(cant) {
   });
 }
 
-//Use this to build an amount of QRs
-build(1)
-
 //Use this to remove all the generated QRs
 // clean()
+
+//Use this to build an amount of QRs
+// generate()
+build(1);
