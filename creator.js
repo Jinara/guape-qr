@@ -110,17 +110,21 @@ const options_object = {
   utf8WithoutBOM: true,
 };
 
-	console.log('yeii')
+const generate = function (name='test', options = options_object) {
+  console.log("yeii");
   // New instance with options
   var qrcode = new QRCode(options_object);
-	console.log('1')
+  console.log("1");
 
   //  Save SVG to file
   qrcode
     .saveSVG({
-      path: "qrcode.svg", // file path
+      path: name +".svg", // file path
     })
     .then((data) => {
-      console.log("`qrcode.svg` has been Created!");
+      console.log(`${name} has been Created!`);
     });
-	console.log('2')
+  console.log("2");
+};
+
+generate()
