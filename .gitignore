@@ -1,4 +1,6 @@
 /node_modules
 package-lock*
 .DS_Store
-generated/*
+generated/*/xs/q*
+generated/*/s/q*
+generated/*/ml/q*

@@ -116,4 +116,4 @@ clean()
 
 //Use this to build an amount of QRs
 // generate()
-build(1);
+// build(1);
