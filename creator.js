@@ -112,8 +112,8 @@ function build(cant) {
 }
 
 //Use this to remove all the generated QRs
-clean()
+// clean()
 
 //Use this to build an amount of QRs
 // generate()
-// build(1);
+build(1);
