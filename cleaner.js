@@ -39,4 +39,10 @@ export const clean = () => {
   deleteDirFilesUsingPattern(/q-*/, 'generated/neutro/xs/')
   deleteDirFilesUsingPattern(/q-*/, 'generated/neutro/s/')
   deleteDirFilesUsingPattern(/q-*/, 'generated/neutro/ml/')
+  console.log('Limpiando xs')
+  deleteDirFilesUsingPattern(/q-*/, 'generated/xs/')
+  console.log('Limpiando s')
+  deleteDirFilesUsingPattern(/q-*/, 'generated/s/')
+  console.log('Limpiando ml')
+  deleteDirFilesUsingPattern(/q-*/, 'generated/ml/')
 }

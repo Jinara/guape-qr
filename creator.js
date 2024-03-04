@@ -19,7 +19,7 @@ const options_object = (current, url) => {
     correctLevel: QRCode.CorrectLevel.H,
 
     // ====== Quiet Zone
-    quietZone: 5,
+    quietZone: 60,
     quietZoneColor: "white",
 
     // ====== Logo
@@ -65,8 +65,6 @@ const generate = function (name = "test", design = test, url = test.url, path = 
 
   //  Save PNG to file
   // Use png over svg cause svg use different configs
-  console.log("AIUDAAA")
-  console.log(path)
   qrcode
     .saveImage({
       path: path + "q-" + name + ".png", // file path
@@ -92,28 +90,23 @@ const generateManyOf = (cant, design, path) => {
 function build(cant) {
   // It generates many QR code of each design for XS size
   const xs = 'xs'
-  designs.forEach((design) => {
-    let path = "generated" + "/" + design.name + "/" + xs + '/'
-    generateManyOf(cant, design, path);
-  });
-
-  // It generates many QR code of each design for S size
   const s = 's'
-  designs.forEach((design) => {
-    let path = "generated" + "/" + design.name + "/" + s + '/'
-    generateManyOf(cant, design, path);
-  });
-
   const ml = 'ml'
   designs.forEach((design) => {
-    let path = "generated" + "/" + design.name + "/" + ml + '/'
+    let path = "generated" + "/" + xs + '/'
+    generateManyOf(cant, design, path);
+    path = "generated" + "/" +  s + '/'
+    generateManyOf(cant, design, path);
+    path = "generated" + "/" + ml + '/'
     generateManyOf(cant, design, path);
   });
 }
 
 //Use this to remove all the generated QRs
-// clean()
+clean()
 
 //Use this to build an amount of QRs
 // generate()
-build(1);
+console.log('generando...')
+build(50);
+// generate('instructions', neutro, 'https://app.guapetones.ar/qr/instrucciones', '');
