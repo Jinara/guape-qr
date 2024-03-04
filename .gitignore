@@ -4,3 +4,4 @@ package-lock*
 generated/*/xs/q*
 generated/*/s/q*
 generated/*/ml/q*
+generated/*
