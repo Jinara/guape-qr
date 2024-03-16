@@ -1,5 +1,6 @@
 # guape-qr
 
+Using qr-js to generate QR codes with my logo.
 
 use:
 node creator.js
